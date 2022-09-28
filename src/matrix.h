@@ -56,8 +56,8 @@
 /* Multiply two 2D matrices */
 #define Matrix2DMult(mat1, mat2, result) ({               \
     assert(mat1.ncols == mat2.nrows);                     \
-    assert(result.nrows == mat1.nrows);                   \
-    assert(result.ncols == mat2.ncols);                   \
+    assert(mat1.nrows == result.nrows);                   \
+    assert(mat2.ncols == result.ncols);                   \
     assert(mat1.data != NULL);                            \
     assert(mat2.data != NULL);                            \
     assert(result.data != NULL);                          \
