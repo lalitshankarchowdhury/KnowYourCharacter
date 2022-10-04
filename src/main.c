@@ -3,7 +3,8 @@
 
 int main()
 {
-    Matrix2DDefn(float) x, y, xy, z, res;
+    Matrix2DDefn(float) x, y, xy, z;
+    Matrix2DDefn(float) res;
     Matrix2DInit(x, 3, 4);
     Matrix2DInit(y, 3, 4);
     Matrix2DInit(xy, 3, 3);

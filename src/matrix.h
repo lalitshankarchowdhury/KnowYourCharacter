@@ -6,7 +6,7 @@
 
 /* Define 2D matrix of a given type */
 #define Matrix2DDefn(type) \
-    struct _Matrix2D {     \
+    struct {               \
         int nrows, ncols;  \
         type** data;       \
     }
