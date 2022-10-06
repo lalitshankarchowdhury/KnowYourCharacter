@@ -43,6 +43,32 @@
         }                                             \
     }
 
+/* Add a row vector to 2D matrix */
+#define VectorRowAdd(mat, vec, result)                               \
+    {                                                                \
+        assert(vec.ncols == mat.ncols);                              \
+        assert(mat.nrows == result.nrows);                           \
+        assert(mat.ncols == result.ncols);                           \
+        for (int i = 0; i < result.nrows; i++) {                     \
+            for (int j = 0; j < result.ncols; j++) {                 \
+                result.data[i][j] = mat.data[i][j] + vec.data[0][j]; \
+            }                                                        \
+        }                                                            \
+    }
+
+/* Add a column vector to 2D matrix */
+#define VectorColAdd(mat, vec, result)                               \
+    {                                                                \
+        assert(vec.nrows == mat.nrows);                              \
+        assert(mat.nrows == result.nrows);                           \
+        assert(mat.ncols == result.ncols);                           \
+        for (int i = 0; i < result.nrows; i++) {                     \
+            for (int j = 0; j < result.ncols; j++) {                 \
+                result.data[i][j] = mat.data[i][j] + vec.data[i][0]; \
+            }                                                        \
+        }                                                            \
+    }
+
 /* Add two 2D matrices */
 #define Matrix2DAdd(mat1, mat2, result)                                \
     {                                                                  \
