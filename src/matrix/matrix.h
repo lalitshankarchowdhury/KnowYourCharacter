@@ -11,7 +11,7 @@
         type** data;       \
     }
 
-/* Initialize matrix with given row and column size */
+/* Initialize 2D matrix */
 #define Matrix2DInit(self, rowsize, colsize)                                         \
     {                                                                                \
         self.nrows = rowsize;                                                        \
@@ -22,7 +22,7 @@
         }                                                                            \
     }
 
-/* Fill matrix with given elements */
+/* Fill 2D matrix */
 #define Matrix2DFill(self, array)                  \
     {                                              \
         for (int i = 0; i < self.nrows; i++) {     \
@@ -129,7 +129,7 @@
         self.data = new_data;                                                          \
     }
 
-/* Free memory allocated to matrix */
+/* Free memory allocated to 2D matrix */
 #define Matrix2DFree(self)                     \
     {                                          \
         assert(self.data != NULL);             \

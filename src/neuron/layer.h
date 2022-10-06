@@ -2,12 +2,14 @@
 #define __LAYER__
 #include "../matrix/matrix.h"
 
+/* Define dense neuron layer of given input type */
 #define LayerDenseDefn(type)                            \
     struct {                                            \
         int ninputs, nneurons;                          \
         Matrix2DDefn(type) lweights, lbiases, loutputs; \
     }
 
+/* Initialize dense neuron layer */
 #define LayerDenseInit(self, n_inputs, n_neurons, weights, biases) \
     {                                                              \
         self.ninputs = n_inputs;                                   \
@@ -19,6 +21,7 @@
         Matrix2DFill(self.lbiases, biases);                        \
     }
 
+/* Calculate output through forward pass */
 #define LayerDenseFrwd(self, l_input)                             \
     {                                                             \
         Matrix2DTrsp(self.lweights);                              \
@@ -26,6 +29,7 @@
         VectorRowAdd(self.loutputs, self.lbiases, self.loutputs); \
     }
 
+/* Free dense neuron layer */
 #define LayerDenseFree(self)         \
     {                                \
         Matrix2DFree(self.lweights); \
