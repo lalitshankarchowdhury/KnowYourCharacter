@@ -10,15 +10,27 @@
     }
 
 /* Initialize dense neuron layer */
-#define LayerDenseInit(self, n_inputs, n_neurons, weights, biases) \
-    {                                                              \
-        self.ninputs = n_inputs;                                   \
-        self.nneurons = n_neurons;                                 \
-        Matrix2DInit(self.lweights, n_neurons, n_inputs);          \
-        Matrix2DInit(self.lbiases, 1, n_neurons);                  \
-        Matrix2DInit(self.loutputs, BATCHSIZE, n_neurons);         \
-        Matrix2DFill(self.lweights, weights);                      \
-        Matrix2DFill(self.lbiases, biases);                        \
+#define LayerDenseInit(self, n_inputs, n_neurons)          \
+    {                                                      \
+        self.ninputs = n_inputs;                           \
+        self.nneurons = n_neurons;                         \
+        Matrix2DInit(self.lweights, n_neurons, n_inputs);  \
+        Matrix2DInit(self.lbiases, 1, n_neurons);          \
+        Matrix2DInit(self.loutputs, BATCHSIZE, n_neurons); \
+    }
+
+/* Fill dense neuron layer */
+#define LayerDenseFill(self, weights, biases) \
+    {                                         \
+        Matrix2DFill(self.lweights, weights); \
+        Matrix2DFill(self.lbiases, biases);   \
+    }
+
+/* Fill dense neuron layer with random values */
+#define LayerDenseRand(self)         \
+    {                                \
+        Matrix2DRand(self.lweights); \
+        Matrix2DRand(self.lbiases);  \
     }
 
 /* Calculate output through forward pass */

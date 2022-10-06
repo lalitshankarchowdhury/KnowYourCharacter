@@ -32,6 +32,16 @@
         }                                          \
     }
 
+/* Full 2D matrix with random values */
+#define Matrix2DRand(self)                                  \
+    {                                                       \
+        for (int i = 0; i < self.nrows; i++) {              \
+            for (int j = 0; j < self.ncols; j++) {          \
+                self.data[i][j] = rand() / (float)RAND_MAX; \
+            }                                               \
+        }                                                   \
+    }
+
 /* Display 2D matrix */
 #define Matrix2DDisp(self, format)                    \
     {                                                 \
