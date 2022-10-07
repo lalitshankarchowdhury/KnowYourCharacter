@@ -1,10 +1,12 @@
 #include <matrix/matrix.h>
+#include <neuron/activation.h>
 #include <neuron/layer.h>
 #include <stdlib.h>
 #define BATCHSIZE 5
 
 int main()
 {
+    srand(0);
     Matrix2DDefn(float) inputs1;
     Matrix2DInit(inputs1, BATCHSIZE, 4);
     Matrix2DRand(inputs1);
@@ -16,8 +18,14 @@ int main()
     LayerDenseFrwd(layer1, inputs1);
     puts("Layer 1 outputs:");
     Matrix2DDisp(layer1.loutputs, "%f");
+    ActivationFrwd(layer1, RECTIFIED_LINEAR);
+    puts("Layer 1 outputs after activation:");
+    Matrix2DDisp(layer1.loutputs, "%f");
     LayerDenseFrwd(layer2, layer1.loutputs);
     puts("Layer 2 outputs:");
+    Matrix2DDisp(layer2.loutputs, "%f");
+    ActivationFrwd(layer2, RECTIFIED_LINEAR);
+    puts("Layer 2 outputs after activation:");
     Matrix2DDisp(layer2.loutputs, "%f");
     Matrix2DFree(inputs1);
     LayerDenseFree(layer1);

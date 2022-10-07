@@ -35,15 +35,16 @@
     }
 
 /* Full 2D matrix with random values */
-#define Matrix2DRand(self)                                  \
-    {                                                       \
-        assert(self.data != NULL);                          \
-        for (int i = 0; i < self.nrows; i++) {              \
-            for (int j = 0; j < self.ncols; j++) {          \
-                assert(self.data[i] != NULL);               \
-                self.data[i][j] = rand() / (float)RAND_MAX; \
-            }                                               \
-        }                                                   \
+#define Matrix2DRand(self)                                                                     \
+    {                                                                                          \
+        assert(self.data != NULL);                                                             \
+        int upper = 1.0, lower = -1.0;                                                         \
+        for (int i = 0; i < self.nrows; i++) {                                                 \
+            for (int j = 0; j < self.ncols; j++) {                                             \
+                assert(self.data[i] != NULL);                                                  \
+                self.data[i][j] = ((float)rand() / (float)RAND_MAX) * (upper - lower) + lower; \
+            }                                                                                  \
+        }                                                                                      \
     }
 
 /* Display 2D matrix */
@@ -161,6 +162,18 @@
         self.nrows = old_ncols;                                                        \
         self.ncols = old_nrows;                                                        \
         self.data = new_data;                                                          \
+    }
+
+/* Apply a function on all 2D matrix elements */
+#define Matrix2DFunc(self, func)                         \
+    {                                                    \
+        assert(self.data != NULL);                       \
+        for (int i = 0; i < self.nrows; i++) {           \
+            for (int j = 0; j < self.ncols; j++) {       \
+                assert(self.data[i] != NULL);            \
+                self.data[i][j] = func(self.data[i][j]); \
+            }                                            \
+        }                                                \
     }
 
 /* Free memory allocated to 2D matrix */
