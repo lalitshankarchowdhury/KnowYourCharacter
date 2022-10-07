@@ -1,5 +1,5 @@
-#include "matrix/matrix.h"
-#include "neuron/layer.h"
+#include <matrix/matrix.h>
+#include <neuron/layer.h>
 #include <stdlib.h>
 #define BATCHSIZE 5
 

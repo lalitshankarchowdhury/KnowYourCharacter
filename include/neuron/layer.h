@@ -1,6 +1,6 @@
 #ifndef __LAYER__
 #define __LAYER__
-#include "../matrix/matrix.h"
+#include <matrix/matrix.h>
 
 /* Define dense neuron layer of given input type */
 #define LayerDenseDefn(type)                            \
