@@ -25,8 +25,10 @@
 /* Fill 2D matrix */
 #define Matrix2DFill(self, array)                  \
     {                                              \
+        assert(self.data != NULL);                 \
         for (int i = 0; i < self.nrows; i++) {     \
             for (int j = 0; j < self.ncols; j++) { \
+                assert(self.data[i] != NULL);      \
                 self.data[i][j] = array[i][j];     \
             }                                      \
         }                                          \
@@ -35,8 +37,10 @@
 /* Full 2D matrix with random values */
 #define Matrix2DRand(self)                                  \
     {                                                       \
+        assert(self.data != NULL);                          \
         for (int i = 0; i < self.nrows; i++) {              \
             for (int j = 0; j < self.ncols; j++) {          \
+                assert(self.data[i] != NULL);               \
                 self.data[i][j] = rand() / (float)RAND_MAX; \
             }                                               \
         }                                                   \
@@ -45,8 +49,10 @@
 /* Display 2D matrix */
 #define Matrix2DDisp(self, format)                    \
     {                                                 \
+        assert(self.data != NULL);                    \
         for (int i = 0; i < self.nrows; i++) {        \
             for (int j = 0; j < self.ncols; j++) {    \
+                assert(self.data[i] != NULL);         \
                 printf(format "\t", self.data[i][j]); \
             }                                         \
             putchar('\n');                            \
@@ -56,11 +62,17 @@
 /* Add a row vector to 2D matrix */
 #define VectorRowAdd(mat, vec, result)                               \
     {                                                                \
-        assert(vec.ncols == mat.ncols);                              \
         assert(mat.nrows == result.nrows);                           \
         assert(mat.ncols == result.ncols);                           \
+        assert(vec.ncols == mat.ncols);                              \
+        assert(mat.data != NULL);                                    \
+        assert(vec.data != NULL);                                    \
+        assert(result.data != NULL);                                 \
         for (int i = 0; i < result.nrows; i++) {                     \
             for (int j = 0; j < result.ncols; j++) {                 \
+                assert(mat.data[i] != NULL);                         \
+                assert(vec.data[0] != NULL);                         \
+                assert(result.data[i] != NULL);                      \
                 result.data[i][j] = mat.data[i][j] + vec.data[0][j]; \
             }                                                        \
         }                                                            \
@@ -69,11 +81,17 @@
 /* Add a column vector to 2D matrix */
 #define VectorColAdd(mat, vec, result)                               \
     {                                                                \
-        assert(vec.nrows == mat.nrows);                              \
         assert(mat.nrows == result.nrows);                           \
         assert(mat.ncols == result.ncols);                           \
+        assert(vec.nrows == mat.nrows);                              \
+        assert(mat.data != NULL);                                    \
+        assert(vec.data != NULL);                                    \
+        assert(result.data != NULL);                                 \
         for (int i = 0; i < result.nrows; i++) {                     \
             for (int j = 0; j < result.ncols; j++) {                 \
+                assert(mat.data[i] != NULL);                         \
+                assert(vec.data[i] != NULL);                         \
+                assert(result.data[i] != NULL);                      \
                 result.data[i][j] = mat.data[i][j] + vec.data[i][0]; \
             }                                                        \
         }                                                            \
@@ -86,8 +104,14 @@
         assert(mat1.ncols == result.ncols);                            \
         assert(mat2.nrows == result.nrows);                            \
         assert(mat2.ncols == result.ncols);                            \
+        assert(mat1.data != NULL);                                     \
+        assert(mat2.data != NULL);                                     \
+        assert(result.data != NULL);                                   \
         for (int i = 0; i < result.nrows; i++) {                       \
             for (int j = 0; j < result.ncols; j++) {                   \
+                assert(mat1.data[i] != NULL);                          \
+                assert(mat2.data[i] != NULL);                          \
+                assert(result.data[i] != NULL);                        \
                 result.data[i][j] = mat1.data[i][j] + mat2.data[i][j]; \
             }                                                          \
         }                                                              \
