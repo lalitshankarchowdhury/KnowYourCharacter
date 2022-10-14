@@ -30,8 +30,6 @@ enum ActivationFunctionType {
         case RECTIFIED_LINEAR:                                  \
             Matrix2DFunc(self.loutputs, RECTIFIED_LINEAR_FUNC); \
             break;                                              \
-        default:                                                \
-            break;                                              \
         }                                                       \
     }
 #endif
